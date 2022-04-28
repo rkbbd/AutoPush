@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace AutoPush
@@ -7,25 +8,48 @@ namespace AutoPush
     {
         static string gitBranch = @"master";
         static string gitCommand = "git";
+        static string gitCheckoutOptions = "-b";
         static string gitAddArgument = @"add -A";
         static string gitCommitArgument = @"commit ""explanations_of_changes""";
-        static string gitPushArgument = @$"push {gitBranch}";
-        static string gitPullArgument = @$"pull {gitBranch}";
+        static string gitPushArgument = @$"push origin {gitBranch}";
+        static string gitPullArgument = @$"pull origin {gitBranch}";
+        static string gitCheckoutArgument = @$"checkout {gitCheckoutOptions} {gitBranch}";
 
-        public static bool AutoPush()
+        static int interval = 1000;
+        static string gitBranchPrefix = "";
+
+        public static KeyValuePair<bool,object> AutoPush()
         {
             try
             {
                 _add();
                 _commit();
                 _push();
-                return true;
+                return new KeyValuePair<bool, object>(true, "Success");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                return new KeyValuePair<bool, object>(true, ex); ;
             }
-           
+        }
+
+        public static KeyValuePair<bool, object> AutoPush(string pullFrom, string pushTo)
+        {
+            gitCheckoutOptions = "";
+            _checkout();
+            gitBranch = string.IsNullOrWhiteSpace(pullFrom) ? gitBranch : pullFrom;
+            _pull();
+            gitBranch = string.IsNullOrWhiteSpace(pushTo) ? gitBranch :pushTo;
+            return AutoPush();
+        }
+
+        public static KeyValuePair<bool, object> AutoPush(string newBranchName, string pullFrom = "", string format = "")
+        {
+            gitBranch = string.IsNullOrWhiteSpace(pullFrom) ? gitBranch : pullFrom;
+            _pull();
+            gitBranch = newBranchName;
+            _checkout();
+            return AutoPush();
         }
 
         private static void _add()
@@ -40,7 +64,11 @@ namespace AutoPush
         {
             Process.Start(gitCommand, gitPushArgument);
         }
-
+        private static void _checkout(string b= "")
+        {
+            gitCheckoutOptions = string.IsNullOrWhiteSpace(b) ? gitCheckoutArgument : b;
+            Process.Start(gitCommand, gitCheckoutArgument);
+        }
         private static void _pull()
         {
             Process.Start(gitCommand, gitPullArgument);
