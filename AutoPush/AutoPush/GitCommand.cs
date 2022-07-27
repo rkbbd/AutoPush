@@ -15,7 +15,6 @@ namespace AutoPush
         private static string gitPushArgument = @$"push origin {gitBranch}";
         private static string gitPullArgument = @$"pull origin {gitBranch}";
         private static string gitCheckoutArgument = @$"checkout {gitCheckoutOptions} {gitBranch}";
-        private static string gitCheckArgument = @"rev-parse";
 
         static int interval = 1000;
         static string gitBranchPrefix = string.Empty;

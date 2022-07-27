@@ -12,13 +12,13 @@ namespace GitApp
         {
             var projpath = "";
             if (System.Diagnostics.Debugger.IsAttached)
-                projpath = new Uri(Path.Combine(new string[] { System.AppDomain.CurrentDomain.BaseDirectory, "..\\.." })).AbsolutePath;
+                projpath = new Uri(Path.Combine(new string[] { System.AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\..\\..\\" })).AbsolutePath;
             else
                 projpath = System.AppDomain.CurrentDomain.BaseDirectory;
 
-            GitCommand.rootPath = "D:/project/";
+            GitCommand.rootPath = projpath;
 
-            var m = GitCommand.isGit();
+            var m = GitCommand.Start();
 
            
             //var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
