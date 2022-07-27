@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\source\\repos\\New folder\\AutoPush\\AutoPush\\AutoPush\\AutoPush.csproj": {}
+    "D:\\project\\AutoPush\\AutoPush\\AutoPush\\AutoPush.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\source\\repos\\New folder\\AutoPush\\AutoPush\\AutoPush\\AutoPush.csproj": {
+    "D:\\project\\AutoPush\\AutoPush\\AutoPush\\AutoPush.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\source\\repos\\New folder\\AutoPush\\AutoPush\\AutoPush\\AutoPush.csproj",
+        "projectUniqueName": "D:\\project\\AutoPush\\AutoPush\\AutoPush\\AutoPush.csproj",
         "projectName": "AutoPush",
-        "projectPath": "C:\\Users\\USER\\source\\repos\\New folder\\AutoPush\\AutoPush\\AutoPush\\AutoPush.csproj",
+        "projectPath": "D:\\project\\AutoPush\\AutoPush\\AutoPush\\AutoPush.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\source\\repos\\New folder\\AutoPush\\AutoPush\\AutoPush\\obj\\",
+        "outputPath": "D:\\project\\AutoPush\\AutoPush\\AutoPush\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -6,18 +6,24 @@ namespace AutoPush
 {
     public static class GitAction
     {
-        static string gitBranch = @"master";
-        static string gitCommand = "git";
-        static string gitCheckoutOptions = "-b";
-        static string gitAddArgument = @"add -A";
-        static string gitCommitArgument = @"commit ""explanations_of_changes""";
-        static string gitPushArgument = @$"push origin {gitBranch}";
-        static string gitPullArgument = @$"pull origin {gitBranch}";
-        static string gitCheckoutArgument = @$"checkout {gitCheckoutOptions} {gitBranch}";
+        private static string gitBranch = @"master";
+        private static string gitCommand = "git";
+        private static string gitCheckoutOptions = "-b";
+        private static string gitAddArgument = @"add -A";
+        private static string gitCommitArgument = @"commit ""explanations_of_changes""";
+        private static string gitPushArgument = @$"push origin {gitBranch}";
+        private static string gitPullArgument = @$"pull origin {gitBranch}";
+        private static string gitCheckoutArgument = @$"checkout {gitCheckoutOptions} {gitBranch}";
 
         static int interval = 1000;
         static string gitBranchPrefix = "";
 
+
+       public static bool isGit()
+        {
+             Process.Start("git", @"rev-parse");
+           return true;
+        }
         public static KeyValuePair<bool,object> AutoPush()
         {
             try
