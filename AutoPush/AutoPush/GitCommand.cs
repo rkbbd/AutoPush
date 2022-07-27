@@ -10,11 +10,12 @@ namespace AutoPush
         private static string gitBranch = @"master";
         private static string gitCheckoutOptions = "-b";
         private static string gitAddArgument = @"add .";
-        private static string gitMessage =string.Concat(DateTime.Now.ToLongDateString(),"-",DateTime.Now.ToLongTimeString(), "_via_AutoPush");
+        private static string gitMessage = string.Concat(DateTime.Now.ToLongDateString(), "-", DateTime.Now.ToLongTimeString(), "_via_AutoPush");
         private static string gitCommitArgument = @$"commit -m ""{gitMessage}""";
         private static string gitPushArgument = @$"push origin {gitBranch}";
         private static string gitPullArgument = @$"pull origin {gitBranch}";
         private static string gitCheckoutArgument = @$"checkout {gitCheckoutOptions} {gitBranch}";
+        private static string gitCheckArgument = @"git ls-remote https://github.com/rkbbd/AutoPush";
 
         static int interval = 1000;
         static string gitBranchPrefix = string.Empty;
@@ -31,9 +32,9 @@ namespace AutoPush
 
         public static bool isGit()
         {
-            //startInfo.Arguments = gitCheckArgument;
+            startInfo.Arguments = gitCheckArgument;
             var process = Process.Start(startInfo);
-            var output = _output(process);
+            string output = process.StandardOutput.ReadToEnd();
             return output.Trim().ToLower().Contains("true");
         }
         public static KeyValuePair<bool, object> Start()
@@ -51,7 +52,7 @@ namespace AutoPush
                 return new KeyValuePair<bool, object>(true, ex); ;
             }
         }
-        //
+
         public static KeyValuePair<bool, object> Start(string pullFrom, string pushTo)
         {
             startInfo.WorkingDirectory = rootPath;
@@ -73,36 +74,37 @@ namespace AutoPush
             return Start();
         }
 
-        private static string _output(Process process)
+        private static string _execute()
         {
+            var process = Process.Start(startInfo);
             string output = process.StandardOutput.ReadToEnd();
             return output;
         }
-        private static Process _add()
+        private static string _add()
         {
-             startInfo.Arguments  = gitAddArgument;
-            return Process.Start(startInfo);
+            startInfo.Arguments = gitAddArgument;
+            return _execute();
         }
-        private static Process _commit()
+        private static string _commit()
         {
-             startInfo.Arguments  = gitCommitArgument;
-            return Process.Start(startInfo);
+            startInfo.Arguments = gitCommitArgument;
+            return _execute();
         }
-        private static Process _push()
+        private static string _push()
         {
-             startInfo.Arguments  = gitPushArgument;
-            return Process.Start(startInfo);
+            startInfo.Arguments = gitPushArgument;
+            return _execute();
         }
-        private static Process _checkout(string b = "")
+        private static string _checkout(string b = "")
         {
             gitCheckoutOptions = string.IsNullOrWhiteSpace(b) ? gitCheckoutArgument : b;
-             startInfo.Arguments  = gitCheckoutArgument;
-            return Process.Start(startInfo);
+            startInfo.Arguments = gitCheckoutArgument;
+            return _execute();
         }
-        private static Process _pull()
+        private static string _pull()
         {
-             startInfo.Arguments  = gitPullArgument;
-            return Process.Start(startInfo);
+            startInfo.Arguments = gitPullArgument;
+            return _execute();
         }
     }
 }
