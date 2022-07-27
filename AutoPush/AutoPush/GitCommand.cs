@@ -8,10 +8,10 @@ namespace AutoPush
     public static class GitCommand
     {
         private static string gitBranch = @"master";
-        private static string gitCommand = "git";
         private static string gitCheckoutOptions = "-b";
-        private static string gitAddArgument = @"add -A";
-        private static string gitCommitArgument = @"commit ""explanations_of_changes""";
+        private static string gitAddArgument = @"add .";
+        private static string gitMessage =string.Concat(DateTime.Now.ToLongDateString(),"-",DateTime.Now.ToLongTimeString(), "_via_AutoPush");
+        private static string gitCommitArgument = @$"commit -m ""{gitMessage}""";
         private static string gitPushArgument = @$"push origin {gitBranch}";
         private static string gitPullArgument = @$"pull origin {gitBranch}";
         private static string gitCheckoutArgument = @$"checkout {gitCheckoutOptions} {gitBranch}";
@@ -19,7 +19,7 @@ namespace AutoPush
         static int interval = 1000;
         static string gitBranchPrefix = string.Empty;
 
-        public static string rootPath = string.Empty;
+        public static string rootPath = "D:/project/AutoPush/";
         private static ProcessStartInfo startInfo = new ProcessStartInfo
         {
             UseShellExecute = false,
@@ -50,7 +50,7 @@ namespace AutoPush
                 return new KeyValuePair<bool, object>(true, ex); ;
             }
         }
-
+        //
         public static KeyValuePair<bool, object> Start(string pullFrom, string pushTo)
         {
             gitCheckoutOptions = "";

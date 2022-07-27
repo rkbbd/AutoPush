@@ -1,10 +1,10 @@
 D:\project\AutoPush\AutoPush\AutoPush\bin\Debug\netcoreapp3.1\AutoPush.deps.json
 D:\project\AutoPush\AutoPush\AutoPush\bin\Debug\netcoreapp3.1\AutoPush.dll
 D:\project\AutoPush\AutoPush\AutoPush\bin\Debug\netcoreapp3.1\AutoPush.pdb
-D:\project\AutoPush\AutoPush\AutoPush\obj\Debug\netcoreapp3.1\AutoPush.csproj.AssemblyReference.cache
 D:\project\AutoPush\AutoPush\AutoPush\obj\Debug\netcoreapp3.1\AutoPush.GeneratedMSBuildEditorConfig.editorconfig
 D:\project\AutoPush\AutoPush\AutoPush\obj\Debug\netcoreapp3.1\AutoPush.AssemblyInfoInputs.cache
 D:\project\AutoPush\AutoPush\AutoPush\obj\Debug\netcoreapp3.1\AutoPush.AssemblyInfo.cs
 D:\project\AutoPush\AutoPush\AutoPush\obj\Debug\netcoreapp3.1\AutoPush.csproj.CoreCompileInputs.cache
 D:\project\AutoPush\AutoPush\AutoPush\obj\Debug\netcoreapp3.1\AutoPush.dll
 D:\project\AutoPush\AutoPush\AutoPush\obj\Debug\netcoreapp3.1\AutoPush.pdb
+D:\project\AutoPush\AutoPush\AutoPush\obj\Debug\netcoreapp3.1\AutoPush.csproj.AssemblyReference.cache

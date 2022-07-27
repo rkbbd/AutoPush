@@ -20,7 +20,7 @@ namespace GitApp
 
             var m = GitCommand.Start();
 
-           
+           //
             //var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             //var path2 = System.AppDomain.CurrentDomain.BaseDirectory;
             //var path3 = System.Environment.CurrentDirectory;
