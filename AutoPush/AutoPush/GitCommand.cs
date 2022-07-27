@@ -19,7 +19,7 @@ namespace AutoPush
         static int interval = 1000;
         static string gitBranchPrefix = string.Empty;
 
-        public static string rootPath = "D:/project/AutoPush/";
+        public static string rootPath = string.Empty;
         private static ProcessStartInfo startInfo = new ProcessStartInfo
         {
             UseShellExecute = false,
@@ -40,6 +40,7 @@ namespace AutoPush
         {
             try
             {
+                startInfo.WorkingDirectory = rootPath;
                 _add();
                 _commit();
                 _push();
@@ -53,6 +54,7 @@ namespace AutoPush
         //
         public static KeyValuePair<bool, object> Start(string pullFrom, string pushTo)
         {
+            startInfo.WorkingDirectory = rootPath;
             gitCheckoutOptions = "";
             _checkout();
             gitBranch = string.IsNullOrWhiteSpace(pullFrom) ? gitBranch : pullFrom;
@@ -63,6 +65,7 @@ namespace AutoPush
 
         public static KeyValuePair<bool, object> Start(string newBranchName, string pullFrom = "", string format = "")
         {
+            startInfo.WorkingDirectory = rootPath;
             gitBranch = string.IsNullOrWhiteSpace(pullFrom) ? gitBranch : pullFrom;
             _pull();
             gitBranch = newBranchName;
